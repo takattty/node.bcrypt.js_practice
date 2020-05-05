@@ -5,12 +5,13 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
+const hash = require('../hash-password');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-/**
- * generate a salt & create hash
- */
+  const set = hash.createHash();
+  console.log(set);
+//generate a salt & create hash
   bcrypt.genSalt(saltRounds, (err, salt) => {
     bcrypt.hash(myPlaintextPassword, salt, (err, hash) => {
       console.log(hash, salt);
