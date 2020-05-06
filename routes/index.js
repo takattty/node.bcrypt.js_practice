@@ -10,7 +10,7 @@ const hash = require('../hash-password');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const set = hash.createHash();
-  console.log(set);
+  console.log(set);//他のファイルのグローバル変数は参照出来るって事だね。いや笑明日検証してみよう
 //generate a salt & create hash
   bcrypt.genSalt(saltRounds, (err, salt) => {
     bcrypt.hash(myPlaintextPassword, salt, (err, hash) => {
